@@ -8,9 +8,9 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Spam;
+use AppBundle\Entity\User;
 
-class SpamController extends FOSRestController
+class UserController extends FOSRestController
 {
     /**
      * @Rest\Get("/")
@@ -26,7 +26,7 @@ class SpamController extends FOSRestController
      */
     public function getAction()
     {
-         return $this->getDoctrine()->getRepository('AppBundle:Spam')->findAll();
+         return $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
     }
 
     /**
@@ -35,7 +35,7 @@ class SpamController extends FOSRestController
     public function idAction($id)
     {
           //  $id = $request->query->get('id');
-         return $this->getDoctrine()->getRepository('AppBundle:Spam')->find($id);
+         return $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
     }
 
     /**
@@ -43,7 +43,7 @@ class SpamController extends FOSRestController
      */
     public function postAction(Request $request)
     {
-        $data = new Spam;
+        $data = new User;
         $name = $request->query->get('name');
         $role = $request->query->get('role');
         $data->setName($name);

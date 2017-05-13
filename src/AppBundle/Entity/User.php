@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class Spam
+class User
 {
     /**
      * @var int
@@ -51,7 +51,7 @@ class Spam
      *
      * @param string $name
      *
-     * @return Spam
+     * @return User
      */
     public function setName($name)
     {
@@ -75,7 +75,7 @@ class Spam
      *
      * @param string $role
      *
-     * @return Spam
+     * @return User
      */
     public function setRole($role)
     {
