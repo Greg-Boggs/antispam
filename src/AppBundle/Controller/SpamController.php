@@ -9,10 +9,10 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\View\View;
-use AppBundle\Entity\User;
+use AppBundle\Entity\Spam;
 
 
-class UserController extends FOSRestController
+class SpamController extends FOSRestController
 {
     /**
      * @Rest\Get("/")
@@ -52,7 +52,7 @@ class UserController extends FOSRestController
  */
  public function postAction(Request $request)
  {
-   $data = new User;
+   $data = new Spam;
    $name = $request->get('name');
    $role = $request->get('role');
  if(empty($name) || empty($role))
@@ -72,7 +72,7 @@ class UserController extends FOSRestController
  */
  public function updateAction($id,Request $request)
  { 
- $data = new User;
+ $data = new Spam;
  $name = $request->get('name');
  $role = $request->get('role');
  $sn = $this->getDoctrine()->getManager();
@@ -104,7 +104,7 @@ else return new View("User name or role cannot be empty", Response::HTTP_NOT_ACC
  */
  public function deleteAction($id)
  {
-  $data = new User;
+  $data = new Spam;
   $sn = $this->getDoctrine()->getManager();
   $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
 if (empty($user)) {
