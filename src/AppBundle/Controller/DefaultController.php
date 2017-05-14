@@ -8,9 +8,9 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\User;
+use AppBundle\Entity\Message;
 
-class UserController extends FOSRestController
+class MessageController extends FOSRestController
 {
     /**
      * @Rest\Get("/")
@@ -26,7 +26,7 @@ class UserController extends FOSRestController
      */
     public function getAction()
     {
-         return $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+         return $this->getDoctrine()->getRepository('AppBundle:Message')->findAll();
     }
 
     /**
@@ -35,7 +35,7 @@ class UserController extends FOSRestController
     public function idAction($id)
     {
           //  $id = $request->query->get('id');
-         return $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
+         return $this->getDoctrine()->getRepository('AppBundle:Message')->find($id);
     }
 
     /**
@@ -43,7 +43,7 @@ class UserController extends FOSRestController
      */
     public function postAction(Request $request)
     {
-        $data = new User;
+        $data = new Message;
         $name = $request->query->get('name');
         $role = $request->query->get('role');
         $data->setName($name);
@@ -51,7 +51,7 @@ class UserController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
         $em->flush();
-         $re = 'User Added Successfully';
+         $re = 'Message Added Successfully';
 
             return $re;
     }
@@ -61,14 +61,14 @@ class UserController extends FOSRestController
      */
     public function deleteAction($id)
     {
-        $data = new User;
+        $data = new Message;
        // $id = $request->query->get('id');
         $sn = $this->getDoctrine()->getManager();
-        $todo = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
+        $todo = $this->getDoctrine()->getRepository('AppBundle:Message')->find($id);
         $sn->remove($todo);
         $sn->flush();
         
-            $re = 'User Deleted Successfully';
+            $re = 'Message Deleted Successfully';
 
             return $re;
     }
@@ -78,17 +78,17 @@ class UserController extends FOSRestController
      */
     public function updateAction(Request $request)
     {
-        $data = new User;
+        $data = new Message;
         $id = $request->query->get('id');
         $name = $request->query->get('name');
         $role = $request->query->get('role');
 
         $sn = $this->getDoctrine()->getManager();
-        $todo = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
+        $todo = $this->getDoctrine()->getRepository('AppBundle:Message')->find($id);
         $todo->setName($name);
         $todo->setRole($role);
         $sn->flush();
-         $re = 'User Updated Successfully';
+         $re = 'Message Updated Successfully';
          return $re;
     }
 
