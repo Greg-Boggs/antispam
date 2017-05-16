@@ -14,3 +14,6 @@ The Antispam API is written by [Greg Boggs](http://www.gregboggs.com)
 ### Contributions Welcome
 Improvements to the filtering algorithm are welcome. If you're good with autoloading classes, the B8 example script could use some fiddling.
 
+#### Kudos to Cloudways
+
+Kudos kickstart on the symfony 3 REST API code is great, and super helpful in getting this project off the ground. Check out their [Symfony rest API example](https://www.cloudways.com/blog/rest-api-in-symfony-3-1/)
